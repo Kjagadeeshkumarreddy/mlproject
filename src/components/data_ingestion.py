@@ -7,6 +7,7 @@ from src.logger import logging
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformation
 @dataclass
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts',"train.csv")
@@ -44,3 +45,6 @@ if __name__ == "__main__":
     train_path, test_path = obj.initiate_data_ingestion()
     print("Train data saved at:", train_path)
     print("Test data saved at:", test_path)
+
+    data_transformation=DataTransformation()
+    data_transformation.initate_data_transformation(train_path,test_path)
